@@ -1,0 +1,21 @@
+pandas
+numpy
+scikit-learn
+
+# Visualization
+plotly
+matplotlib
+seaborn
+
+# Web Framework
+streamlit
+
+# Utilities
+requests
+openpyxl
+python-dateutil
+pytz
+
+# Optional Development Tools
+jupyter
+ipython
