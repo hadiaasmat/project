@@ -13,11 +13,10 @@ from sklearn.cluster import KMeans
 # ─────────────────────────────────────────────
 st.set_page_config(
     page_title="Warehouse Robot AI",
-    page_icon="🤖",
     layout="wide",
 )
 
-st.title("🤖 Warehouse Robot — Intelligent AI Navigation System")
+st.title(" Warehouse Robot — Intelligent AI Navigation System")
 st.markdown(
     "Simulates a warehouse robot using **A\\* Search**, **Genetic Algorithm**, "
     "and **K-Means Clustering** to pick up shelf items in an optimal order."
@@ -27,7 +26,7 @@ st.markdown(
 #  Sidebar – configuration
 # ─────────────────────────────────────────────
 with st.sidebar:
-    st.header("⚙️ Configuration")
+    st.header(" Configuration")
 
     seed = st.number_input("Random Seed", min_value=0, max_value=9999, value=42, step=1)
     num_items = st.slider("Number of Items to Pick", min_value=2, max_value=16, value=8)
@@ -342,7 +341,7 @@ if run:
     grid, START, SHELVES, ORDER_ITEMS, GRID_SIZE = build_warehouse(int(seed), num_items)
 
     # ── Initial Layout ──────────────────────────────────────
-    st.subheader("📦 Warehouse Layout")
+    st.subheader(" Warehouse Layout")
     fig_layout = draw_warehouse(grid, START, SHELVES, ORDER_ITEMS,
                                 title='Initial Warehouse Layout', GRID_SIZE=GRID_SIZE)
     st.pyplot(fig_layout)
@@ -360,7 +359,7 @@ if run:
     st.divider()
 
     # ── A* demo ────────────────────────────────────────────
-    st.subheader("🔍 Algorithm 1: A* Pathfinding")
+    st.subheader(" Algorithm 1: A* Pathfinding")
     with st.spinner("Running A* single-path test…"):
         test_path, test_cost, test_nodes = astar(grid, START, ORDER_ITEMS[0])
 
@@ -378,7 +377,7 @@ if run:
     naive_cost = route_cost_cached(dist_cache, START, ORDER_ITEMS)
 
     # ── Genetic Algorithm ──────────────────────────────────
-    st.subheader("🧬 Algorithm 2: Genetic Algorithm")
+    st.subheader(" Algorithm 2: Genetic Algorithm")
     prog = st.progress(0, text="Evolving pickup order…")
 
     # Run GA with progress updates
@@ -422,7 +421,7 @@ if run:
     st.divider()
 
     # ── K-Means ────────────────────────────────────────────
-    st.subheader("📍 Algorithm 3: K-Means Clustering")
+    st.subheader(" Algorithm 3: K-Means Clustering")
     km_labels, km_centers, km_order = kmeans_zone_order(ORDER_ITEMS, START, n_clusters=n_zones)
     km_cost = route_cost_cached(dist_cache, START, km_order)
 
@@ -443,7 +442,7 @@ if run:
     st.divider()
 
     # ── Full Simulation ────────────────────────────────────
-    st.subheader("🚀 Full Robot Simulation (GA + A*)")
+    st.subheader(" Full Robot Simulation (GA + A*)")
     with st.spinner("Running full route simulation…"):
         full_path, total_cost, total_nodes = get_full_route_astar(grid, START, ga_order)
 
@@ -469,7 +468,7 @@ if run:
     st.divider()
 
     # ── Performance Comparison ─────────────────────────────
-    st.subheader("📊 Performance Comparison")
+    st.subheader(" Performance Comparison")
     strategies = ['Naive Order', 'K-Means Zones', 'GA Optimized']
     costs = [naive_cost, km_cost, best_cost_ga]
 
